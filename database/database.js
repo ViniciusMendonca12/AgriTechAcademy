@@ -3,8 +3,8 @@
     connection: {
       host : 'localhost',
       user : 'root',
-      password : 'familia100',
-      database : 'agritech6'
+      password : '****',
+      database : '****'
     }
   });
 
