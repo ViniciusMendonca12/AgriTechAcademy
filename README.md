@@ -54,3 +54,19 @@ Com o avanço da globalização e as rápidas transformações no mercado de TI,
 - Interfaces simples e intuitivas, facilitando a navegação e interação dos usuários.
 
 ---
+
+## 🌟 Imagens do Projeto
+
+### 📚 Tela de Assistir Curso
+![Tela de Assistir Curso](public/img/readmeIMG/agriTechAssistirCurso.png)
+
+### 🎓 Tela de Cursos Disponíveis
+![Tela de Cursos Disponíveis](public/img/readmeIMG/agriTechCursos.png)
+
+### 📈 Meu Aprendizado
+![Meu Aprendizado](public/img/readmeIMG/agriTechMeuAprendizado.png)
+
+### 💬 Modal de Informações
+![Modal de Informações](public/img/readmeIMG/agriTechModal.png)
+
+
