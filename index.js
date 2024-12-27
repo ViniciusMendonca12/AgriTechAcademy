@@ -24,7 +24,7 @@ app.use(express.static("public"))
 
 
 app.use(session({
-    secret: "fofinho", cookie: {maxAge: 100000000}
+    secret: "****", cookie: {maxAge: 100000000}
 }))
 
 
