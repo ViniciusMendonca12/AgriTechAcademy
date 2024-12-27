@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastroStyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="werapper">
+        <form method="POST" action="/cadastrar/usuario">
+            <h1>Cadastrar Usuário</h1>
+
+            <div class="input-box">
+                <input type="text" placeholder="Usuario" name="nomeUsuario" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="email" placeholder="usuario@email.com.br" name="emailUsuario" required>
+                <i class='bx-envelope'></i>
+            </div>
+            
+            <div class="input-box">
+                <input type="password" placeholder="*******" name="senhaUsuario" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            
+            <button type="submit" class="btn">Cadastrar</button>
+
+            <div class="cadastro">
+                <p>Você já tem um cadastro? <a href="/login">Clique aqui!</a></p>
+            </div>
+        </form>  
+    </div>
+    
+</body>
+</html>

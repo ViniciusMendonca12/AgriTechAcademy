@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsividade</title>
+    <link rel="stylesheet" href="/css/listaCursosStyle.css">
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/bf39da844a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="corpo">
+    <%- include('../partials/header.ejs'); %>
+
+    
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container text-center">
+            <a class="navbar-brand" href="/"><img class="img-fluid" src="../img/logobranco.svg" alt=""></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <%if(sessao == 0){%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Tornar-se Aluno</a>
+                    </li>
+                    <% }else if(sessao == 1){ %>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/meu-aprendizado">Meu Aprendizado</a>
+                        </li>
+
+                        <% if (ehInstrutor == 1){ %>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/gerenciar/cursos">Gerenciar Cursos</a>
+                        </li>
+
+                       <% }else{ %>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/cadastro/instrutor">Tornar-se Instrutor</a>
+                        </li>
+                       <% } %>
+
+                   <% } %>
+                    
+
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cursos">Explorar Cursos</a>
+                    </li>
+
+                    <%if(sessao == 1){%>
+                        <li class="nav-item d-flex" id="linkPerfil">
+                          <img class="img img-fluid" src="<%=usuario.imagemUsuario%>" id="imagemPerfil" alt="">
+
+                          <a class="nav-link" href="/perfil"><%= usuario.nomeUsuario %></a>
+                        </li>
+                            
+                           
+                        <%}else{%>
+                          <li class="nav-item" id="linkCadastro">
+                            <a class="nav-link" href="/cadastro">Cadastro</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                          </li>
+            
+                    <%}%>    
+
+                   
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+    <main>
+        <h1>Cursos Disponiveis</h1>
+        <% categorias.forEach((categoria) => { 
+            const hasCourses = cursos.some(curso => curso.idCategoria == categoria.id);
+            if (hasCourses) {
+        %>
+            <div class="teste container">
+                <h2><%= categoria.title %></h2>
+                <div class="container plantacao" style="background-image: url('<%= categoria.imagemCategoria %>');">
+                    <div class="row">
+                        <%
+                        let contagem = 0; 
+                        let temMaisCurso = 0
+                        cursos.forEach((curso) => { 
+                            if (contagem >= 6) {
+                                temMaisCurso++
+                                return;
+                            }
+
+                            if (curso.idCategoria == categoria.id) {
+                                contagem++;
+                        %>
+                                <div class="col-12 col-sm-6 col-lg-4 align-self-center">
+                                    <div class="container containerPlantacaoDentro text-center ">
+                                        <div class="row ">
+                                            <img class="imagem" src="<%= curso.imagemCurso %>" alt="">
+                                        </div>
+                                        <div class="row">
+                                            <h3><%= curso.titulo %></h3>
+                                            <h6 id="nomeInstrutor"><%= curso.nomeCompleto %></h6>
+                                        </div>
+                                        <div class="row">
+                                            <p id="descricaoP"><%= curso.descricao %></p>
+                                        </div>
+                                        <div class="row align-items-start">
+                                            <div class="col-6">
+                                                <div class="starsLista">
+                                                    <input type="radio" value="5" <%= curso.mediaAvaliacoes >= 5 ? 'checked' : '' %>><label>★</label>
+                                                    <input type="radio" value="4" <%= curso.mediaAvaliacoes >= 4 && curso.mediaAvaliacoes < 5 ? 'checked' : '' %>><label>★</label>
+                                                    <input type="radio" value="3" <%= curso.mediaAvaliacoes >= 3 && curso.mediaAvaliacoes < 4 ? 'checked' : '' %>><label>★</label>
+                                                    <input type="radio" value="2" <%= curso.mediaAvaliacoes >= 2 && curso.mediaAvaliacoes < 3 ? 'checked' : '' %>><label>★</label>
+                                                    <input type="radio" value="1" <%= curso.mediaAvaliacoes >= 1 && curso.mediaAvaliacoes < 2 ? 'checked' : '' %>><label>★</label>
+                                                </div>                                            
+                                            </div>
+                                            <div class="col-6">
+                                                <a id="botaoVerMais" data-id="<%= curso.id %>" class="btn btn-warning btn-sm botao" data-bs-toggle="modal" data-bs-target="#modalExemplo">Ver Mais</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <% } }) %>
+                        <%if(temMaisCurso > 0){%>
+                            <div class="wrapper">
+                                <a class="button" href="#">Explorar mais cursos!</a>
+                            </div>
+                            
+                            <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+                            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <defs>
+                                    <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />    
+                                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                                    </filter>
+                                </defs>
+                            </svg>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        <% } 
+        }) %>
+        
+    </main>
+
+    <div class="modal fade" id="modalExemplo" tabindex="-1" aria-labelledby="modalExemploLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content modalCurso">
+                <div class="container">
+                    <div class="row">
+                        <div id="colunaEsquerda" class="col-md-12 col-lg-7">
+                            <div class="row">
+                            <div class="row">
+                                <h2 id="tituloCursoModal"></h2>
+                                <p id="descricaoMiniModal" class="paragrafoMiniDescricao"></p>
+                            </div>
+
+                            <div class="row avaliacao">
+                                <div class="col-1">
+                                    <p id="notaAvaliacaoModal" class="paragrafoPequeno">4.0</p>
+                                </div>
+                                <div id="containerEstrelas" class="col-6 mr-1">
+                                 
+                                </div>
+                                <div class="col-3">
+                                    <p id="quantidadeAvaliacoesModal" class="paragrafoPequeno">(34 avaliações)</p>
+
+                                </div>
+                                <div class="col-2">
+                                    <p id="quantidadeAlunosModal" class="paragrafoPequeno"></p>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p id="criadoPorModal" class="paragrafoPequeno"></p>
+
+                            </div>
+
+                            <div class="row">
+                                <p id="ultimaAtualizacaoModal" class="paragrafoPequeno"></p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row linhaCinza">
+                            <div class="row">
+                                <h4>Este curso inclui</h4>
+                                <ul>
+                                    <li><p id="horasCursoModal" class="paragrafoMedio"></p></li>
+                                    <li><p class="paragrafoMedio"> Certificado de Conclusão</p></li>
+                                </ul>
+                            </div>
+
+                            <div class="row">
+                                <h4>Conteúdo do curso</h4>
+                                <p id="informacoesConteudoCursoModal" class="paragrafoPequeno"></p>
+
+                                <ul id="listaAulasCurso"></ul>
+                            </div>
+
+                            
+                            <div class="row">
+                                <h4>Requisitos</h4>
+                                <ul>
+                                    <li><p id="requisitosModal" class="paragrafoMedio"></p></li>
+                                </ul>
+                            </div>
+
+                            <div class="row">
+                                <h4>Descrição</h4>
+                                <p id="descricaoCompletaModal" class="paragrafoMedio"></p>
+                            </div>
+
+                            <div class="row">
+                                <button id="verAvaliacoes" class="btn btn-warning">Ver avaliações</button>
+                            </div>
+
+                        </div>
+                        </div>
+
+                        
+
+                        <div id="colunaDireita" class="col-md-12 col-lg-5">
+                            <div class="row linhaCinzaDireita ">
+                                <div style="justify-content: center;" class="row">
+                                    <iframe id="linkVideoModal" width="250px" height="250px" src="https://www.youtube.com/embed/wNMCfdr4XRs?si=DiRGjmDULKYGCYX6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                    <p class="paragrafoPequeno">Pré-visualizar este curso</p>
+                                </div>
+
+                                <div class="row">
+                                    <h4> Oque você aprenderá </h4>
+                                    <ul>
+                                        <li><p id="conteudoAprendizadoModal" class="paragrafoMedio"></p></li>
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-10">
+                                        <button id="adicionarMeusCursos" class="btn btn-warning">Adicionar aos meus cursos</button>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <button class="btn btn-warning"><i class="fas fa-share"></i></button>
+
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    
+
+    <%- include('../partials/footer.ejs'); %>
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="/scripts/listaCurso.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

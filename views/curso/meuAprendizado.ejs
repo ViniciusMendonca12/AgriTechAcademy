@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Aprendizado</title>
+    <link rel="stylesheet" href="/css/meuAprendizado.css">
+    <%- include('../partials/header.ejs'); %>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container text-center">
+            <a class="navbar-brand" href="/"><img class="img-fluid" src="../img/logobranco.svg" alt=""></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    
+                    <%if(instrutor != undefined){%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cadastro/curso">Cadastrar Curso</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/gerenciar/cursos">Gerenciar meus cursos</a>
+                        </li>
+                    <%}else{%>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/cadastro/instrutor">Tornar-se Instrutor</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cadastro/curso">Cadastrar Curso</a>
+                        </li>
+                    <%}%>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cursos"> Cursos</a>
+                        </li>
+
+                       
+                        <li style="margin-left: 60px;" class="nav-item d-flex" id="linkPerfil">
+                          <img class="img img-fluid" src="<%=usuario.imagemUsuario %>" id="imagemPerfil" alt="">
+                          <a class="nav-link" href="/perfil"><%= usuario.nomeUsuario %></a>
+                        </li>
+                            
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="cabecalho">
+    <div class="container">
+        <div class="row">
+            <h1>Meu Aprendizado</h1>
+        </div>
+        
+    </div>
+</section>
+
+<section id="filtro">
+    <div class="row">
+        <div class="col-md">
+            <div class="input-group">
+                <div class="wrapperSearch">
+                    <div class="search-input">
+                        <a href="" target="_blank" hidden></a>
+                        <input type="text" placeholder="Procure pelo Curso..." id="inputNome">
+                        <input type="hidden" id="idPessoaInput">
+                        <div id="autocom-box" class="autocom-box">
+
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+    </div>
+    <div class="row" id="linhaFiltros">
+        <div class="col-md-3">
+            <div class="form-floating">
+              <select class="form-select" id="filtroCursoOrdem">
+                <option selected value="0">Acessados recentemente</option>
+                <option value="1">Adquiridos recentemente</option>
+                <option value="2">Título: A a Z</option>
+                <option value="3">Título: Z a A</option>
+              </select>
+              <label for="filtroCursoOrdem">Classificar por</label>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="selectCategorias">
+                <option value="0" selected>Categorias</option>
+              </select>
+              <label for="selectCategorias">Filtrar por</label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-floating">
+                <select class="form-select" id="selectProgresso">
+                  <option value="0" selected>Progresso</option>
+                  <option value="1">Não iniciado</option>
+                  <option value="2">Em andamento</option>
+                  <option value="3">Concluído</option>
+
+
+                </select>
+              </div>
+        </div>
+
+        <div class="col-md">
+            <div class="form-floating">
+                <select class="form-select" id="selectInstrutores">
+                  <option value="0" selected>Instrutor</option>
+                </select>
+              </div> 
+        </div>
+        <div class="col-md-2">
+            <button id="botaoBuscar" class="btn btn-success"> Buscar </button>
+            <button id="botaoRedefinir" class="btn btn-warning"> Redefinir </button>
+        </div>
+        
+    </div>
+</section>
+
+<section id="cursos">
+    <div class="container plantacao">      
+        <div id="testeee" class="row">
+
+   <%cursos.forEach((curso) =>{%>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 align-self-center curso " data-ultimo-acesso="<%=curso.ultimoAcesso%>">
+        <div class="container containerPlantacaoDentro text-center ">
+            <div class="row ">
+                <img class="imagem " src="<%=curso.imagemCurso%>" alt="">
+            </div>
+            <div class="row">
+                <h3><%= curso.titulo %></h3>
+            </div>
+            <div class="row">
+                <p><%=curso.nomeInstrutor%> <%=curso.totalAulasCurso%></p>
+            </div>
+                <div class="progress-container">
+                    <div class="progress-bar progressBar" data-progress="<%= curso.totalAulasCurso > 0 ? Math.floor((curso.aulasAssistidas / curso.totalAulasCurso) * 100) : 0 %>"></div>
+                </div>         
+            <div class="row align-items-start">
+                <div class="col-6"> 
+                    <div class="starsLista">
+                                <input type="radio" value="5" <%= curso.mediaAvaliacoes >= 5 ? 'checked' : '' %>><label>★</label>
+                                <input type="radio" value="4" <%= curso.mediaAvaliacoes >= 4 && curso.mediaAvaliacoes < 5 ? 'checked' : '' %>><label>★</label>
+                                <input type="radio" value="3" <%= curso.mediaAvaliacoes >= 3 && curso.mediaAvaliacoes < 4 ? 'checked' : '' %>><label>★</label>
+                                <input type="radio" value="2" <%= curso.mediaAvaliacoes >= 2 && curso.mediaAvaliacoes < 3 ? 'checked' : '' %>><label>★</label>
+                                <input type="radio" value="1" <%= curso.mediaAvaliacoes >= 1 && curso.mediaAvaliacoes < 2 ? 'checked' : '' %>><label>★</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <a class=" btn btn-warning btn-sm botao" href="/assistir/curso/<%=curso.titulo%>">Assistir</a>
+                </div>
+            </div>
+            <div class="row">
+                <p id="avaliacao" id-curso="<%=curso.id%>" class="avaliacao" data-bs-toggle="modal" data-bs-target="#modalAvaliacao">Deixe uma avaliação</p>
+            </div>
+        </div>
+    </div>
+   <% })%>
+        
+    </div>
+</div>
+
+</section>
+
+  <div class="modal fade" id="modalAvaliacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="container mt-3 text-center">
+                <h2>Avalie este curso:</h2>
+                <h6>Selecione uma avaliação</h6>
+                <div class="stars">
+                  <input type="radio" name="star" id="star1" value="5"><label for="star1">★</label>
+                  <input type="radio" name="star" id="star2" value="4"><label for="star2">★</label>
+                  <input type="radio" name="star" id="star3" value="3"><label for="star3">★</label>
+                  <input type="radio" name="star" id="star4" value="2"><label for="star4">★</label>
+                  <input type="radio" name="star" id="star5" value="1"><label for="star5">★</label>
+                </div>
+                <p id="rating-value"> <span id="rating"></span></p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12 centro" >
+                    <textarea class="form-control" placeholder="Faça um comentário sobre o curso(opcional)" name="comentarioAvaliacao" id="comentarioAvaliacao"></textarea>
+                    <input id="idCurso" hidden type="text">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button id="fecharModalAvaliacao" type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+          <button id="cadastrarAvaliacao" type="button" class="btn btn-success">Enviar avaliação</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+
+<%- include('../partials/footer.ejs'); %>
+
+</body>
+<script src="/scripts/meuAprendizado.js"></script>
+</html>

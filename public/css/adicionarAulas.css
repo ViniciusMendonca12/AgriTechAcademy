@@ -1,0 +1,177 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* css pagina listagem de cursos */
+.monomaniac-one-regular {
+    font-family: "Monomaniac One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.background {
+    background-image: url('/img/backgroundCadastroCurso.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
+
+
+.image{
+    width: 220px;
+    height: 150px;
+    border-radius: 5%;
+    justify-content: center;
+
+}
+
+.container h1{
+    color: rgb(255, 165, 0);
+    font-family: "Monomaniac One", sans-serif;
+    margin: 5px 0px 30px 0px;
+    text-align: center;
+}
+
+.card{
+    margin-top: 30px;
+}
+
+.container .caixaEsquerda{
+    padding: 0px 20px 0px 40px;
+    text-align: center;
+}
+
+.container .caixaMeio{
+    padding: 0px 20px 0px 40px;
+}
+
+.container .caixaMeio .form{
+    text-align: start;
+}
+
+.container .caixaDireita{
+    padding: 0px 20px 0px 40px;
+    text-align: center;
+}
+
+.container h2{
+    color: rgb(255, 165, 0);
+    font-family: "Monomaniac One", sans-serif;
+    text-align: center;
+    font-size: 28px;
+}
+
+.container .aula{
+    background-color:#8cd3218c;
+    margin: 0px 40px 0px 40px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 5px;
+    padding-top:2px ;
+    
+}
+
+#cadastrarAula{
+    margin: 20px 0px 20px 0px;
+}
+
+#editarAulaSelecionada{
+    margin: 20px 0px 20px 0px;
+
+}
+
+
+#editarAula{
+    margin-left:8px;
+}
+
+.container .caixaDireita i{
+    margin-right: 2px ;
+}
+
+#aulasExistentes{
+    margin-bottom: 10px;
+}
+
+#cadastrarAula{
+    background-color:#69a017; ;
+}
+
+  
+.corpo{
+    background-color: #EEFFD3;
+    font-family: 'Monomanic One', sans-serif;
+
+}
+
+.navbar {
+    background-color: #8CD321; 
+}
+
+.nav-item a{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.avatar{
+    width: 64px;
+    height: 64px;   
+}
+
+main h1{
+    text-align: center;
+    color: #8CD321;
+    font-family: 'Monomaniac One', sans-serif;
+    margin-top: 30px;
+
+}
+#imagemPerfil{
+    width: 62px;
+    height: 62px;
+    margin-top: -7px;
+    margin-right: -18px;
+    border-radius: 50%;
+ }
+ 
+.rodape{
+    margin-top: 40px;
+    background-color: #8CD321;
+    padding-top: 20px;
+}
+
+.rodape h3{
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.rodape a{
+    text-decoration: none;
+    color: #33621a;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.rodape i{
+    color:#1a4503;
+}
+
+.rodape hr{
+    width: 80%;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.rodape .hrSobreNos{
+    width: 100%;
+}
+
+.rodape p{
+    color: #33621a;
+}
+
+.rodape a:hover{
+    color: rgb(83, 162, 40);
+}

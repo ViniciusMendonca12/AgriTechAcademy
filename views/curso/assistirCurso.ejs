@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistir Curso</title>
+    <link rel="stylesheet" href="/css/assistirCursoStyle.css">
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/bf39da844a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<header class="header">    
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-3">
+                <a href="/"><img class="img img-fluid imgLogo" src="/img/logobranco.svg" alt=""></a>
+            </div>
+            <div class=" col-1 divisor"></div>
+            <div class="col-4">
+                <div class="d-flex align-items-center">
+                    <img class="img img-fluid iconeCurso" src="<%=curso.imagemCurso%>" alt="">
+                    <h3><%=curso.titulo%></h3>
+                </div>
+            </div>
+            <div class=" col-1 divisor"></div>
+            <div class="col-3">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle btn-lg" id="progressoBotao" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 <img src="/img/trabalho-em-progresso.png" id="progressoImagem" alt=""> Progresso
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <div class="container" id="dropInfo">
+                      <div class="row">
+                        <span class="porcentagem">Progresso: <%= Math.floor(progresso.porcentagem_assistida)%> %</span>
+                      </div>
+                      <div class="row">
+                        <span class="spanAulas">Você assistiu <%=progresso.aulas_assistidas%> de <%=progresso.total_aulas%> aulas</span>
+                      </div>
+                      <div class="row" >
+                        <span class="spanAulas">Você assistiu <%=progresso.duracao_assistida%> horas de <%=progresso.duracao_total%> horas</span>
+                      </div>
+                    </div>
+            
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="sideNav">
+<div class="container">
+  <div class="row" id="linhaTitulo">
+    <div class="col-10">
+      <h5>Conteúdo do Curso</h5>
+    </div>
+    <div class="col-2">
+      <img class="img img-fluid" src="/img/seta-para-baixo.png" alt="">
+    </div>
+  </div>
+    <%aulas.forEach(aula=> {%>
+        <div class="row linhaAula">
+
+        <div class="form-check"> 
+            <% if(aula.concluida == 1) { %>
+              <form method="post" action="/removeVideoAssistido" class="meuFormularioDelete">
+
+              <input class="form-check-input removerCheckbox" type="checkbox" checked >
+              <label class="form-check-label" for="flexCheckChecked">
+                <a href="/assistir/aula/<%= curso.titulo%>/<%=aula.tituloAula%>"> <%=aula.tituloAula%></a>
+              </label>
+              <input type="number" name="idAulaConcluida" value="<%=aula.idAulaConcluida%>" style="display: none;">
+            </form>
+
+             <%} else if(aula.concluida != 1) { %>
+              <form method="post" action="/salvaVideoAssistido" class="meuFormularioPost">
+
+              <input class="form-check-input enviarCheckbox" type="checkbox" value="" >
+              <label class="form-check-label" for="flexCheckChecked">
+                <a href="/assistir/aula/<%= curso.titulo%>/<%=aula.tituloAula%>"> <%=aula.tituloAula%></a>
+              </label>
+              <input type="number" value="<%=aula.idAula%>" name="idAula" style="display: none;">
+              <input type="number" value="<%=aula.idCurso%>" name="idCurso" style="display: none;">
+              <input type="text" class="dataConclusao" name="dataConclusao" style="display: none;">
+              </form>
+            <% }%> 
+
+          </div>
+          
+
+
+        </div> 
+
+    <%})%>
+    
+</div>
+</div>
+
+<iframe class="iframe" src="<%=curso.linkCurso%>"
+ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+ <nav class="navbar navbar-expand-lg navVerCurso">
+  <div class="container-fluid">
+    <div class=" navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" onclick="visaoGeral()">Visão Geral</a>
+        </li>
+        <li class="nav-item" style="display: none;" id="verAulas">
+          <a class="nav-link" onclick="verAulas()">Aulas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Notas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" >Avaliação</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- visao geral -->
+<div class="container text-left" id="visaoGeral">
+  <div class="row bordaSessao">
+    <h5>Introdução ao curso: <%=curso.titulo%></h5>
+    <p> <%=curso.descricaoAulaCurso%></p>
+  </div>
+
+  <div class="row bordaSessao">
+    <h5>Categoria:</h5>
+    <p> <%=curso.title%></p>
+  </div>
+
+  <div class="row bordaSessao">
+    <h5>Sobre o curso:</h5>
+    <p> <%=curso.descricao%></p>
+  </div>
+
+  <div class="row">
+    <h5>Instrutor</h5>
+    <div class="row align-items-center">
+      <div class="col-2">
+        <img class="img img-fluid rounded float-start imgAvatarInstrutor" src="/img/avatar.png" alt="">
+      </div>
+      <div class="col-10 justify-content-center nomeCargoInstrutor">
+        <h6> curso.nomeCompleto </h6>
+        <span>Software Developer ---------</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <p>Engenheiro de software com anos de experiência, apaixonado por desenvolvimento de games, 
+        e desenvolvimento web. Domina várias tecnologias como: Javascript, ExpressJS, SocketIO, Angular,
+         React, C# e ASP.NET Core. Ama ensinar. Baixista e gamer no tempo livre.
+        Além disso é CEO da instituição Guia do Programador, e já ensinou milhares de alunos ao redor do mundo.------------</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+</body>
+
+
+<script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+                selector: "#descricaoPergunta",
+                language: 'pt_BR',
+                plugins: [
+                    'advlist',
+                    'autolink',
+                    'link',
+                    'image',
+                    'lists',
+                    'preview',
+                    'searchreplace',
+                    'wordcount',
+                    'fullscreen',
+                    'insertdatetime',
+                    'media',
+                    'save',
+                    'table',
+                    'emoticons',
+                ]
+            })
+</script>
+
+<script>
+    var dataAtual = new Date();
+
+    var ano = dataAtual.getFullYear();
+    var mes = ('0' + (dataAtual.getMonth() + 1)).slice(-2); 
+    var dia = ('0' + dataAtual.getDate()).slice(-2); 
+    var hora = ('0' + dataAtual.getHours()).slice(-2); 
+    var minutos = ('0' + dataAtual.getMinutes()).slice(-2); 
+    var segundos = ('0' + dataAtual.getSeconds()).slice(-2); 
+    var dataHoraFormatada = ano + '-' + mes + '-' + dia + ' ' + hora + ':' + minutos + ':' + segundos;
+
+
+    $('#dataPergunta').attr('placeholder',dataHoraFormatada);
+    $('#dataPergunta').attr('value',dataHoraFormatada);
+    $('.dataConclusao').attr('value',dataHoraFormatada);
+
+
+    var containerVisaoGeral = document.getElementById("visaoGeral")
+    var containerPerguntasFrequentes = document.getElementById("perguntasFrequentes")
+
+    function visaoGeral() {
+    if (containerVisaoGeral.style.display === 'none' || containerVisaoGeral.style.display === '') {
+        containerVisaoGeral.style.display = 'inline-block';
+        containerPerguntasFrequentes.style.display = 'none';
+    } else {
+        containerVisaoGeral.style.display = 'none';
+    }
+}
+
+$(document).ready(function() {
+  $(".enviarCheckbox").change(function() {
+    $(this).closest(".meuFormularioPost").submit(); 
+  });
+});
+
+$(document).ready(function() {
+  $(".removerCheckbox").change(function() {
+    $(this).closest(".meuFormularioDelete").submit(); 
+  });
+});
+
+    
+
+
+
+
+</script>
+</html>

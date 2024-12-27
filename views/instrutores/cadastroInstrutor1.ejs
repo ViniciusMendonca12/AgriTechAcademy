@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Instrutor</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cadastro para Instrutor</h1>
+        <form action="/cadastrarInstrutor" method="post">
+
+
+            <div class="nomes">
+
+                <label>Usuário:</label>
+                <input type="text" placeholder="<%= usuario.nomeUsuario %>" disabled>
+                <input type="text" value="<%= usuario.id %>" name="idUsuario" style="display: none;">
+
+                <label>Nome Completo:</label>
+                <input type="text" placeholder="" value="" name="nomeInstrutor">
+
+            </div>
+
+            <div class="contatos">
+                <label>CPF:</label>
+                <input type="number" placeholder="123.243.434-56" value="" name="cpfInstrutor">
+    
+                <label>Endereço:</label>
+                <input type="text" placeholder="Rua brasil 234" value="" name="enderecoInstrutor">
+            </div>
+           
+
+            <label>Celular:</label>
+            <input type="number" placeholder="(23)99999-9999" value="" name="contatoInstrutor">
+
+            <label>Data de Nascimento:</label>
+            <input type="date" placeholder="01/01/0001" value="" name="dataNascimentoInstrutor">
+
+            <div class="buttons">
+                <input type="submit" value="Cadastrar">
+                <a class="voltarHome" href="/">Retornar a Home</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

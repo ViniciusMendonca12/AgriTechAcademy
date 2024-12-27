@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* css pagina listagem de cursos */
+
+.monomaniac-one-regular {
+    font-family: "Monomaniac One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.iconeCurso{
+    width: 55px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.header{
+    background-color: #8CD321;
+}
+
+header .imgLogo{
+    width: 80%;
+}
+
+.divisor{ 
+    height: 70px;
+    border-left: 1px solid #496f1076;
+    vertical-align: center;
+    text-align: center;
+     
+}
+
+header h3{
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    margin-left: 10px;
+    font-size: 22px;
+}
+
+header h6{
+    color: #ffffff;
+    font-family: 'Monomaniac One', sans-serif;
+    margin-left: 10px;
+}
+
+
+header .iconeSeta{
+    width:32px ;
+}
+
+#progressoBotao{
+    background-color: #5e9014;
+    border: none;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    width: 75%;
+}
+
+#dropInfo .porcentagem{
+    font-weight: bolder;
+
+}
+
+#progressoImagem{
+    width: 28px;
+}
+
+    .sideNav{
+        background-color: #8cd3216f;
+        position: absolute;
+        margin-top: 8.3%;
+        height: 250%;
+        width: 25%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 20px;
+        border-top: solid 2px #407723;
+        border-right: solid 2px #407723;
+    }
+
+    
+
+.sideNav h5{
+    color: #407723;
+    font-family: "Poppins", sans-serif;
+
+}
+
+#linhaTitulo{
+    border-bottom:1px solid #407723;
+    margin-bottom: 10px;
+
+}
+
+.linhaAula a{
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    color: #407723;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+
+}
+
+.linhaAula a:hover{
+    color: #64ad3d;
+}
+
+#flexCheckChecked{
+    margin-left:auto;
+}
+
+.linhaAula{
+    border-bottom:1px solid #407723;
+    padding: 5px;
+    padding-bottom: 10px;
+ 
+}
+
+.navVerCurso{
+    margin-left: 25%;
+    background-color: #8CD321;
+    margin-top:-8px;
+    border-top: solid 2px #407723;
+}
+
+.navVerCurso a{
+    color: white;
+    font-family: 'Monomaniac One', sans-serif;
+    margin-right: 15px;
+}
+
+.navVerCurso a:hover{
+    color: rgba(255, 255, 255, 0.772);
+    font-family: 'Monomaniac One', sans-serif;
+    margin-right: 15px;
+    border-bottom: solid 2px #407723;
+
+}
+
+#visaoGeral{
+    margin-left: 25%;
+    margin-top:20px;
+    width: 74%;
+}
+
+#visaoGeral .imgAvatarInstrutor{
+    width: 114px;
+}
+
+#visaoGeral .nomeCargoInstrutor{
+    margin-left: -30px;
+}
+
+#visaoGeral h5{
+    color: #FF9300;
+    font-family: 'Monomaniac One', sans-serif;
+
+}
+
+#visaoGeral p{
+    color: #3c3b39;
+    margin-left: 10px;
+    padding-right: 10%;
+}
+
+
+#visaoGeral h6{
+    color: #FF9300;
+    font-family: "Poppins", sans-serif;
+    margin-bottom:-0px ;
+}
+
+#visaoGeral span{
+    color: #FF9300;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+}
+
+#visaoGeral .bordaSessao{
+    border-bottom: solid 1px #407723;
+    margin-bottom: 15px;
+
+}
+
+#perguntasFrequentes{
+    margin-left: 25%;
+    width: 74%;
+}
+
+ .identificadorAluno .imgAvatarAluno{
+    width: 60px;
+    border-radius: 50%;
+}
+
+#perguntasFrequentes h5{
+    color: #FF9300;
+    font-family: 'Monomaniac One', sans-serif;
+    margin-top: 20px;
+
+}
+
+#perguntasFrequentes .nomeAluno{
+    color: #FF9300;
+    margin-top: 5px;
+    margin-left: -15px;
+
+}
+
+.iframe{
+    width: 60%;
+    height:400px;
+    margin-left: 32.5%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 993px) {
+    #progressoBotao{
+        width: 110%;
+    }
+
+    header h3{
+        font-size: 22px;
+    }
+
+    .iconeCurso{
+        width: 40px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+  }
+  
+
+@media screen and (max-width: 767px) {
+.sideNav{
+    display: none;
+}
+
+.iframe{
+    width: 100%;
+    height:400px;
+    margin-left: 0px;
+}
+
+.navVerCurso{
+    margin-left: 0px;
+    margin-top:-8px;
+}
+
+#visaoGeral{
+    margin-left: 0px;
+
+}
+
+#perguntasFrequentes{
+    margin-left: 0px;
+
+}
+#progressoBotao{
+    width: 150%;
+}
+
+#verAulas{
+    display: inline-block;
+}
+
+
+}
+
+#button{
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.form-group{
+    margin-top: 15px;
+}
+

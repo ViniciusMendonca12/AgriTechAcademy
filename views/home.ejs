@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriTech Academy</title>
+    <link rel="stylesheet" href="/css/homeStyle.css">
+    <script src="https://kit.fontawesome.com/bf39da844a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <header>
+        <img class="bg-img" src="/img/background/fundoPlantação-min.jpg" alt="">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+              <a class="navbar-brand" href="#"><img class="img-fluid" src="./img/logobranco.svg" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/cursos">Cursos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#sobre">Sobre</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#objetivos">Objetivos</a>
+                  </li>
+
+                  <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                  </li>  
+
+                  <%if(sessao1 == 1){%>
+
+                    <li class="nav-item d-flex" id="linkPerfil">
+                      <img class="img img-fluid" src="<%=usuario.imagemUsuario%>" id="imagemPerfil" alt="">
+
+                      <a class="nav-link" href="/perfil/usuario"><%= usuario.nomeUsuario %></a>
+                    </li>
+                        
+                       
+                    <%}else if(sessao1 == 0){%>
+                      <li class="nav-item" id="linkCadastro">
+                        <a class="nav-link" href="/cadastro">Cadastro</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                      </li>
+        
+                        <%}%>
+
+                 
+
+                  </div>
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+    <div class="container">
+        <div class="row" >
+            <div class="col-12 text-center">
+                <div class="banner">
+                    <h1>Aprenda com <span>o Agro!</span></h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="sobre" id="sobre">
+  <div class="container text-start containerSobre">
+    <div class="row">
+      <div class="col-md-12 col-lg-4 imagem">
+        <img class="img img-fluid imagemPlanta" src="/img/padrao/planta.svg" alt="">
+      </div>
+        <div class="col-md-12 col-lg-8 texto ">
+          <div class="row">
+            <h3>Um salto na educação</h3>
+          </div>
+          <div class="row  ">
+            <p class="text-start">Nossa plataforma oferece uma variedade de cursos especializados projetados para atender às necessidades do setor agrícola. Com foco em áreas como gestão agrícola, inovação tecnológica no campo, práticas sustentáveis e gestão de cultivos, nossos cursos são elaborados por especialistas no assunto e atualizados com as últimas tendências e pesquisas.</p>
+            <p class="text-start">Seja você um agricultor procurando aprimorar suas habilidades, um estudante buscando uma carreira no setor agrícola ou um profissional procurando se atualizar, nossa plataforma tem algo a oferecer. Junte-se a nós e dê o próximo passo em sua jornada de aprendizado agrícola.  </p>
+          </div>
+        </div>
+     </div>
+      
+      
+
+  </div>
+</section>
+
+
+<section class="objetivos" id="objetivos">
+  <div class="container text-center ">
+    <div class="row justify-content-center tituloObjetivos">
+      <h6>SOBRE NÓS</h6>
+      <hr>
+    </div>
+    <div class="row justify-content-center">
+      <h2>Objetivos</h2>
+    </div>
+  </div>
+
+  <div class="container containerObjetivos text-center">
+
+    <div class="row">
+        <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+            <div class="container containerDentro text-center ">
+                <div class="row justify-content-center ">
+                    <img class="imagem " src="/img/icons/devices.png" alt="">
+                </div>
+                <div class="row">
+                    <h3> Acessibilidade</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+            <div class="container containerDentro text-center ">
+                <div class="row justify-content-center">
+                    <img class="imagem " src="/img/icons/networking.png" alt="">
+                </div>
+                <div class="row">
+                    <h3>Colaboração e Networking</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+            <div class="container containerDentro text-center ">
+                <div class="row justify-content-center ">
+                    <img class="imagem " src="/img/icons/conteudo-online.png" alt="">
+                </div>
+                <div class="row">
+                    <h3>Ampla gama de tópicos</h3>
+                </div>
+            </div>
+        </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+          <div class="container containerDentro text-center ">
+              <div class="row justify-content-center ">
+                  <img class="imagem " src="/img/icons/relatorio.png" alt="">
+              </div>
+              <div class="row">
+                  <h3> Últimas Tecnologias</h3>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+          <div class="container containerDentro text-center ">
+              <div class="row justify-content-center">
+                  <img class="imagem " src="/img/icons/desenvolvimento.png" alt="">
+              </div>
+              <div class="row">
+                  <h3> Desenvolvimento </h3>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-6 col-sm-6 col-lg-4 align-self-center">
+          <div class="container containerDentro text-center ">
+              <div class="row justify-content-center ">
+                  <img class="imagem " src="/img/icons/multidao.png" alt="">
+              </div>
+              <div class="row">
+                  <h3>Comunidade Ativa</h3>
+              </div>
+          </div>
+      </div>
+</div>  
+<div class="row">
+  <div class="col-12 justify-content-center">
+    <button class="button"> Veja nossos cursos</button>
+  </div>
+</div>
+
+</div>
+
+
+</section>
+
+<%- include('partials/footer.ejs'); %>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      const navEl = document.querySelector('.navbar')
+
+      window.addEventListener('scroll', () => {
+        if(window.scrollY >= 500){
+        navEl.classList.add('navbar-scrolled')
+      }else if(window.scrollY < 56){
+        navEl.classList.remove('navbar-scrolled')
+      }
+      })
+      
+
+    </script>
+</body>
+
+</html>

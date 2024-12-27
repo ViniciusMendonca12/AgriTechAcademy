@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aulas</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/adicionarAulas.css">
+    <%- include('../partials/header.ejs'); %>
+
+
+</head>
+
+<body class="background">
+    
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container text-center">
+               
+                <a class="navbar-brand" href="/"><img class="img-fluid" src="http://localhost:8080/img/logobranco.svg" alt=""></a>
+    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav">
+                        
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cadastro/curso">Cadastrar Curso</a>
+                            </li> 
+    
+                            <li class="nav-item">
+                                <a class="nav-link" href="/meu-aprendizado">Meu Aprendizado</a>
+                            </li>
+                       
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cursos"> Cursos</a>
+                            </li>
+    
+
+                            <li style="margin-left: 60px;" class="nav-item d-flex" id="linkPerfil">
+                              <img class="img img-fluid" src="<%=usuario.imagemUsuario %>" id="imagemPerfil" alt="">
+                              <a class="nav-link" href="/perfil"><%= usuario.nomeUsuario %></a>
+                            </li>
+                                
+    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <h1>Gerenciador de Aulas</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 caixaEsquerda">
+                    <h2>Curso: <%= curso.titulo%></h2>
+                    <img class="image" src="<%= curso.imagemCurso %>" alt="">
+                    <p><%= curso.descricao%></p>
+                </div>
+                <div class="col-lg-4 caixaMeio">
+                    <div class="form">
+                        <h2>Cadastrar Aula</h2>
+                        <div class="mb-2">
+                            <label for="tituloAula" class="form-label">Título</label>
+                            <input type="text" class="form-control form-control-sm" id="tituloAula">
+                        </div>
+                        <div class="mb-2">
+                            <label for="descricaoAula" class="form-label">Descrição</label>
+                            <textarea type="text" class="form-control form-control-sm" id="descricaoAula"></textarea>   
+                        </div>
+                        <div class="mb-2">
+                            <label for="linkAula" class="form-label">Link</label>
+                            <input type="text" class="form-control form-control-sm" id="linkAula">
+                        </div>
+                        <div class="mb-2">
+                            <label for="duracaoAula" class="form-label">Duração</label>
+                            <input type="text" class="form-control form-control-sm" id="duracaoAula">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="enderecoInstrutor" class="form-label">Endereço</label>
+                            <input type="text" class="form-control form-control-sm" id="enderecoInstrutor">
+                        </div> -->
+                        <input style="display: none;" type="number" name="idCurso" id="idCurso" value="<%=curso.id%>">
+                        <input style="display: none;" type="number" name="idAula" id="idAula" value="">
+                        <input style="display: none;"  type="text" name="tituloCurso" id="tituloCurso" value="<%=curso.titulo%>">
+                    </div>
+
+                    <button id="cadastrarAula" class="btn btn-success"> Cadastrar </button>
+                    <button style="display: none;" id="editarAulaSelecionada" class="btn btn-warning"> Editar </button>
+                    <button style="display: none;" id="cancelarEdicao" class="btn btn-danger"> Cancelar </button>
+
+
+
+                </div>
+                <div class="col-lg-4 caixaDireita">
+                    <h2 id="aulasExistentes">Aulas Existentes</h2>
+                    <%if(aulas < 1){%>
+                        <p>Nenhuma aula cadastrada</p>
+                    <%}else{%>
+                    <%aulas.forEach(aula =>{%>
+                        <div class="aula">
+                            <p><%= aula.tituloAula%><i id-aula="<%=aula.id%>" id="editarAula" class="bi bi-pencil editarAula"></i> <i id-aula="<%=aula.id%> "id="excluirAula" class="bi bi-trash excluirAula"></i> <i titulo-curso="<%=curso.titulo%>" titulo-aula="<%=aula.tituloAula%>" id="visualizarAula" class="bi bi-eye visualizarAula"></i> </p>
+                        </div>
+                    
+                    <%})%>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+
+<%- include('../partials/footer.ejs'); %>
+
+<script src="/scripts/adicionarAulas.js"></script>
+
+</html>

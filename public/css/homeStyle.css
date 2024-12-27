@@ -1,0 +1,235 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* css pagina listagem de cursos */
+.monomaniac-one-regular {
+    font-family: "Monomaniac One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+body{
+    overflow-x: hidden;
+}
+
+.bg-img{
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    filter:brightness(0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+}
+
+.banner{
+   margin-top: 41vh;
+}
+.banner h1 {
+    font-size: 4rem;
+    color: #fff
+}
+  
+.banner h1 span {
+    color: rgb(255, 165, 0);
+
+}
+
+.nav-item a{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.navbar-scrolled{
+    background-color: #8CD321; 
+}
+
+.navbar{
+    transition:all 0.5s ;
+}
+
+.sobre{
+    margin-top: 55vh;
+}
+
+.sobre h2{ 
+    color: #8CD321;
+    font-family: "Monomaniac One", sans-serif;
+    margin-bottom:15px ;
+    margin-left: 4%;
+    margin-top: 30px;
+    
+}
+
+.sobre h3{
+    color: #8CD321;
+    font-family: "Monomaniac One", sans-serif;
+}
+
+.container .texto{
+    margin-top: 20px;
+}
+
+.container p{
+    font-family: "Poppins", sans-serif;
+    color: #6E716E;
+    padding-right: 25%;
+    margin-bottom: 30px;
+}
+
+.container .imagemPlanta{
+    height: 80%;
+    border-radius: 20px;
+}
+
+
+@media (max-width: 991.98px) {
+    .container .texto{
+        margin-top: -50px;
+    }
+    .container .imagem{
+        text-align: center;
+    }
+    
+  }
+
+/* objetivos */
+
+.objetivos{
+    background-color: #d9d9d967;
+    
+}
+
+.objetivos h2{ 
+    color: #75b319;
+    font-family: "Monomaniac One", sans-serif;
+    margin-top: -20px;
+    margin-bottom: 35px;
+    
+}
+
+.objetivos hr{
+    color: #75b319;
+    width: 20%;
+    border: solid 1px;
+}
+
+.objetivos h6{
+    color: #75b319;
+    font-family: "Monomaniac One", sans-serif;
+    margin-top: 30px;
+}
+
+.containerObjetivos h3{
+    font-family: "Monomaniac One", sans-serif;
+    color: white;
+}
+
+.containerObjetivos .imagem{
+    width: 40%;
+    margin-bottom: 15px;
+    
+}
+
+.containerDentro{
+    background-color: #ffa01c;
+    border-radius: 20px;
+    padding: 25px 0px;
+    margin-top: 15px;
+    margin-bottom:15px ;
+}
+
+.button {
+    font-size: 1rem;
+    padding: 0.8em 2em;
+    background-color: #8CD321;
+    border: 2px solid black;
+    border-radius: 1em;
+    color: white;
+    font-weight: bolder;
+    transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s;
+    box-shadow: -5px 5px 0px 0px #ffa01c ;
+    margin-top: 15px;
+    margin-bottom: 60px;
+
+  }
+  
+  .button:hover {
+    transform: translate(5px, -5px);
+  }
+
+.rodape{
+    background-color: #8CD321;
+    padding-top: 20px;
+}
+
+.rodape h3{
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+.rodape a{
+    text-decoration: none;
+    color: #33621a;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.rodape i{
+    color:#1a4503;
+}
+
+.rodape hr{
+    width: 80%;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.rodape .hrSobreNos{
+    width: 100%;
+}
+
+.rodape p{
+    color: #33621a;
+}
+
+.rodape a:hover{
+    color: rgb(83, 162, 40);
+}
+
+#linkCadastro{
+     margin-left: 40px; 
+    
+}
+
+#linkPerfil{
+    margin-left: 25%;
+}
+
+@media (max-width: 991.98px) {
+    #linkCadastro{
+        margin-left: 0px; 
+   }
+
+   #linkPerfil{
+        margin-left: 0px;
+    }
+
+    #bibliografiaUsuario{
+        width: 40px
+    }
+  }
+
+
+#imagemPerfil{
+    width: 52px;
+    height: 52px;
+    margin-right: -18px;
+    border-radius: 50%;
+}
