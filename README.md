@@ -12,28 +12,28 @@ Com o avanço da globalização e as rápidas transformações no mercado de TI,
 
 ## 🚧 Dependências Utilizadas
 
-"dependencies": {
-    "axios": "^1.7.2",
-    "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "jquery": "^3.7.1",
-    "jsdom": "^24.0.0",
-    "knex": "^3.1.0",
-    "mysql2": "^3.9.1",
-    "nodemon": "^3.0.1",
-    "router": "^1.3.8"
-}
+- **axios**: ^1.7.2  
+- **bcrypt**: ^5.1.1  
+- **bcryptjs**: ^2.4.3  
+- **body-parser**: ^1.20.2  
+- **cors**: ^2.8.5  
+- **ejs**: ^3.1.9  
+- **express**: ^4.18.2  
+- **express-session**: ^1.17.3  
+- **jquery**: ^3.7.1  
+- **jsdom**: ^24.0.0  
+- **knex**: ^3.1.0  
+- **mysql2**: ^3.9.1  
+- **nodemon**: ^3.0.1  
+- **router**: ^1.3.8  
 
 ## 🌟 Funcionalidades
 - **Oferecimento de cursos complementares**: Alunos podem acessar conteúdos relevantes e práticos para o mercado.
 - **Participação ativa dos alunos**: Os estudantes podem criar cursos, fomentar o compartilhamento de conhecimento e dinamizar o processo educacional.
 - **Gerenciamento de usuários**: Cadastro e login seguro utilizando criptografia (bcrypt).
 - **Plataforma responsiva**: Totalmente adaptada para dispositivos móveis e desktop.
+- **Coméntarios e avaliações**: Os usuários podem fazer comentários em aulas e deixar avaliações nos cursos.
+
 
 ---
 
@@ -41,7 +41,7 @@ Com o avanço da globalização e as rápidas transformações no mercado de TI,
 ### Melhorias Futuras:
 1. **Acompanhamento mais detalhado dos cursos visualizados**: 
    - Monitorar o progresso dos usuários em cada curso.
-   - Exibir estatísticas personalizadas para os alunos e criadores de conteúdo.
+   - Exibir estatísticas personalizadas para os alunos e instrutores.
 2. **Recomendações personalizadas**:
    - Usar algoritmos para recomendar cursos com base no histórico de visualização dos usuários.
 3. **Expansão dos recursos colaborativos**:
